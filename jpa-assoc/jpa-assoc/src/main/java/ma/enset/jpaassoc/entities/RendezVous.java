@@ -9,8 +9,8 @@ import java.util.Date;
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
 public class RendezVous {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    private String id;
     private Date date;
     @Enumerated(EnumType.STRING)
     private StatusRdv status;

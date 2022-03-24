@@ -52,9 +52,10 @@ public class JpaAssocApplication {
 			rendezVous.setStatus(StatusRdv.PENDING);
 			rendezVous.setMedecin(medecin);
 			rendezVous.setPatient(patient);
-			rendezVousRepository.save(rendezVous);
+			RendezVous savedRdv = hospitalService.saveRDV(rendezVous);
+			System.out.println(savedRdv.getId());
 
-			RendezVous rendezVous1=rendezVousRepository.findById(1L).orElse(null);
+			RendezVous rendezVous1=rendezVousRepository.findAll().get(0);
 			Consultation consultation=new Consultation();
 			consultation.setDateConsultation(new Date());
 			consultation.setRendezVous(rendezVous1);
