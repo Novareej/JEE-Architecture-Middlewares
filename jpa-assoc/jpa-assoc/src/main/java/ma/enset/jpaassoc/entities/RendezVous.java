@@ -1,5 +1,6 @@
 package ma.enset.jpaassoc.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class RendezVous {
     @Enumerated(EnumType.STRING)
     private StatusRdv status;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Patient patient;
     @ManyToOne
     private Medecin medecin;
