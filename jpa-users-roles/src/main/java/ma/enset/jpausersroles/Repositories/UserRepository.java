@@ -1,2 +1,8 @@
-package ma.enset.jpausersroles.Repositories;public interface UserRepository {
+package ma.enset.jpausersroles.Repositories;
+
+import ma.enset.jpausersroles.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User,String> {
+    User findByUsername(String userName);
 }
