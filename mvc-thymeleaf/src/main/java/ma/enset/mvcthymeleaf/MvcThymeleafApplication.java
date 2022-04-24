@@ -23,9 +23,7 @@ public class MvcThymeleafApplication {
             patientRepository.save(new Patient(null,"Bh",new Date(),false,10));
             patientRepository.save(new Patient(null,"Wiam",new Date(),true,30));
 
-            patientRepository.findAll().forEach(p->{
-                System.out.println(p.getNom());
-            });
+            patientRepository.findAll().forEach(p-> System.out.println(p.getNom()));
         };
     }
 
