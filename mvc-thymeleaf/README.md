@@ -10,6 +10,8 @@ Afficher les patients
 
 Faire la pagination
 
+![image](https://user-images.githubusercontent.com/73220257/164986087-10f49f61-060c-4686-8f08-a50f3f3099ac.png)
+
 Chercher les patients
 
 Supprimer un patient
