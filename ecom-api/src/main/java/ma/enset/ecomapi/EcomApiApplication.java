@@ -1,6 +1,8 @@
 package ma.enset.ecomapi;
 
+import ma.enset.ecomapi.Repositories.CategoryRepository;
 import ma.enset.ecomapi.Repositories.ProductRepository;
+import ma.enset.ecomapi.entities.Category;
 import ma.enset.ecomapi.entities.Product;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,15 +22,23 @@ public class EcomApiApplication {
     }
 
     @Bean
-    public CommandLineRunner start(ProductRepository productRepository){
+    public CommandLineRunner start(ProductRepository productRepository, CategoryRepository categoryRepository){
         return args -> {
-            Stream.of("Computer","Printer","SmartPhone").forEach(name->{
-                productRepository.save(
-                        new Product(
-                                UUID.randomUUID().toString(),
-                                name,Math.random()*8000,
-                        Math.random()*100)
-                );
+            Stream.of("Computers","Printers","SmartPhones").forEach(name->{
+                Category category = new Category();
+                category.setName(name);
+                categoryRepository.save(category);
+            });
+            categoryRepository.findAll().forEach(cat->{
+                for(int i=0;i<=5;i++){
+                    Product product=new Product();
+                    product.setId(UUID.randomUUID().toString());
+                    product.setPrice(Math.random()*5555);
+                    product.setQuantity(1+Math.random()*89);
+                    product.setName(cat.getName()+"-"+i);
+                    product.setCategory(cat);
+                    productRepository.save(product);
+                }
             });
         };
     }
